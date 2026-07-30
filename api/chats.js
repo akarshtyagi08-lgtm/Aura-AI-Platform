@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  // Set CORS headers so your Surge.sh frontend can call this backend securely
+  // 1. Enable CORS for Surge.sh and cross-origin requests
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -14,56 +14,52 @@ export default async function handler(req, res) {
     return;
   }
 
+  // 2. Only allow POST requests for chat
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { prompt, model = 'llama-3.3-70b-versatile', temperature = 0.7 } = req.body;
+    const { messages, model } = req.body;
 
-    if (!prompt) {
-      return res.status(400).json({ error: 'Prompt is required' });
+    // Validate request input
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({ error: 'Messages array is required' });
     }
 
     const apiKey = process.env.GROQ_API_KEY;
-
     if (!apiKey) {
-      return res.status(500).json({ error: 'GROQ_API_KEY environment variable is not set on server.' });
+      return res.status(500).json({ error: 'GROQ_API_KEY environment variable is not configured on Vercel' });
     }
 
+    // 3. Call Groq API securely from the backend
     const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: model,
-        temperature: temperature,
-        messages: [
-          {
-            role: 'system',
-            content: 'You are Aura AI, a high-speed, helpful, and concise AI assistant.'
-          },
-          {
-            role: 'user',
-            content: prompt
-          }
-        ]
-      })
+        model: model || 'llama-3.3-70b-versatile',
+        messages: messages,
+      }),
     });
 
     const data = await groqResponse.json();
 
     if (!groqResponse.ok) {
-      return res.status(groqResponse.status).json({ error: data.error || 'Groq API request failed' });
+      return res.status(groqResponse.status).json({ error: data.error?.message || 'Failed to fetch from Groq API' });
     }
 
-    const reply = data.choices[0]?.message?.content || 'No response generated.';
+    // 4. Return the AI response back to Surge/Vercel frontend
+    return res.status(200).json(data);
 
-    return res.status(200).json({
-      status: 'success',
-      model: model,
+  } catch (error) {
+    console.error('API Error:', error);
+    return res.status(500).json({ error: 'Internal Server Error', details: error.message });
+  }
+}
+: model,
       reply: reply,
       usage: data.usage || {}
     });

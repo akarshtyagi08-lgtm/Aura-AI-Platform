@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Prompt Library & Marketplace</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .templates-header {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .search-filter-bar {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 280px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text-primary);
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .search-input:focus {
+      border-color: var(--border-focus);
+    }
+
+    .templates-grid {
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 0 1.5rem;
+    }
+
+    .template-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .template-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: fit-content;
+    }
+
+    .prompt-preview {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      max-height: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-focus);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="templates.html" style="color: var(--text-primary);">Prompts</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="templates-header reveal">
+    <div class="badge">💡 System Instruction Marketplace</div>
+    <h1>Pre-Tuned System Prompts for Peak Model Performance.</h1>
+    <p>Copy production-ready prompt presets directly into your Playground or Studio session.</p>
+  </section>
+
+  <!-- Search & Filter Bar -->
+  <div class="search-filter-bar reveal">
+    <input type="text" class="search-input" id="searchBox" placeholder="Search templates (e.g. Code Reviewer, Python Expert, Copywriter)..." oninput="filterTemplates()" />
+  </div>
+
+  <!-- Prompt Templates Grid -->
+  <section class="templates-grid" id="templatesGrid">
+    
+    <!-- Template 1 -->
+    <div class="template-card reveal">
+      <div>
+        <span class="tag">Engineering</span>
+        <h3 style="margin-top: 10px; font-size: 1.2rem;">Python Code Architect</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 8px 0;">Optimizes Python logic, refactors inefficient loops, and enforces clean PEP8 standards.</p>
+        <div class="prompt-preview" id="p1">You are an expert Python engineer. Analyze the code provided, find bottlenecks, apply PEP8 formatting, and return clean code with brief comments.</div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-secondary" onclick="copyPrompt('p1', this)">Copy Prompt</button>
+        <a href="app.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem; text-align: center;">Use in App</a>
+      </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="template-card reveal">
+      <div>
+        <span class="tag">Security</span>
+        <h3 style="margin-top: 10px; font-size: 1.2rem;">API Security Auditor</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 8px 0;">Scans backend endpoint functions for exposed keys, SQL injection risks, and bad CORS setup.</p>
+        <div class="prompt-preview" id="p2">You are a Senior Cybersecurity Auditor. Review the endpoint payload for authorization flaws, unhandled exceptions, and key exposure risks.</div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-secondary" onclick="copyPrompt('p2', this)">Copy Prompt</button>
+        <a href="app.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem; text-align: center;">Use in App</a>
+      </div>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="template-card reveal">
+      <div>
+        <span class="tag">UI/UX Design</span>
+        <h3 style="margin-top: 10px; font-size: 1.2rem;">Frontend CSS Specialist</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 8px 0;">Crafts sleek modern CSS styling, glassmorphism, responsive grids, and micro-interactions.</p>
+        <div class="prompt-preview" id="p3">You are a Principal Frontend Designer. Output clean, modern CSS with custom variables, smooth transitions, dark mode slate tones, and responsive media queries.</div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-secondary" onclick="copyPrompt('p3', this)">Copy Prompt</button>
+        <a href="app.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem; text-align: center;">Use in App</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+  <script>
+    function copyPrompt(id, btnElement) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
+      
+      const originalText = btnElement.innerText;
+      btnElement.innerText = "Copied! ✓";
+      setTimeout(() => {
+        btnElement.innerText = originalText;
+      }, 2000);
+    }
+
+    function filterTemplates() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const cards = document.querySelectorAll(".template-card");
+      
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? "flex" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

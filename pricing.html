@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Access Tiers & Limits</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .pricing-header {
+      padding: 5rem 2rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      max-width: 1100px;
+      margin: 3rem auto 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      padding: 0 1.5rem;
+    }
+
+    .price-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .price-card.featured {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .price-amount {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 1rem 0 0.5rem;
+      color: var(--status-online);
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .check-icon {
+      color: var(--status-online);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="pricing.html" style="color: var(--text-primary);">Limits & Tiers</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="pricing-header reveal">
+    <div class="badge">🎁 100% Free & Open Access</div>
+    <h1>Transparent API Limits & Community Usage Tiers.</h1>
+    <p>Aura AI is completely free to use. Here is how our Groq proxy manages rate limits to ensure high speed for everyone.</p>
+  </section>
+
+  <!-- Pricing / Access Tiers Grid -->
+  <section class="pricing-grid">
+    
+    <!-- Sandbox Tier -->
+    <div class="price-card reveal">
+      <div>
+        <h3>Guest Anonymous</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 4px;">For quick browser tests and instant prompts.</p>
+        <div class="price-amount">FREE</div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">No login required</span>
+        
+        <hr style="border: 0; border-top: 1px solid var(--border-subtle); margin: 1.5rem 0;" />
+
+        <ul class="feature-list">
+          <li><span class="check-icon">✓</span> LLaMA 3.3 70B Access</li>
+          <li><span class="check-icon">✓</span> 30 Requests / Minute</li>
+          <li><span class="check-icon">✓</span> Standard Groq Latency</li>
+          <li><span class="check-icon">✓</span> Access to Prompt Marketplace</li>
+        </ul>
+      </div>
+      <a href="app.html" class="btn-primary" style="background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle); text-align: center;">Start Testing</a>
+    </div>
+
+    <!-- Power User Tier -->
+    <div class="price-card featured reveal">
+      <div>
+        <div class="badge" style="margin-bottom: 0.5rem; font-size: 0.75rem;">Recommended</div>
+        <h3>Developer Community</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 4px;">Bring your own free Groq API key for zero limits.</p>
+        <div class="price-amount">FREE</div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">BYOK (Bring Your Own Key)</span>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-subtle); margin: 1.5rem 0;" />
+
+        <ul class="feature-list">
+          <li><span class="check-icon">✓</span> Unlimited Requests</li>
+          <li><span class="check-icon">✓</span> DeepSeek-R1 Distill Access</li>
+          <li><span class="check-icon">✓</span> Full Playground Parameter Control</li>
+          <li><span class="check-icon">✓</span> Custom System Instructions</li>
+          <li><span class="check-icon">✓</span> Save History Locally</li>
+        </ul>
+      </div>
+      <a href="app.html" class="btn-primary" style="text-align: center;">Launch App</a>
+    </div>
+
+    <!-- Self-Hosted Tier -->
+    <div class="price-card reveal">
+      <div>
+        <h3>Open Source Fork</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 4px;">Host your own copy on Surge.sh + Vercel.</p>
+        <div class="price-amount">FREE</div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">100% Open Source</span>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-subtle); margin: 1.5rem 0;" />
+
+        <ul class="feature-list">
+          <li><span class="check-icon">✓</span> Deploy to custom Surge domain</li>
+          <li><span class="check-icon">✓</span> Full GitHub source code access</li>
+          <li><span class="check-icon">✓</span> Zero server maintenance costs</li>
+          <li><span class="check-icon">✓</span> Complete UI customization</li>
+        </ul>
+      </div>
+      <a href="docs.html" class="btn-primary" style="background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle); text-align: center;">View Setup Docs</a>
+    </div>
+
+  </section>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

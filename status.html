@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — System Status</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .status-header {
+      padding: 5rem 2rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .banner-operational {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--status-online);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .status-grid {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0 1.5rem;
+    }
+
+    .status-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .status-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--status-online);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .incident-history {
+      max-width: 900px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+    }
+
+    .incident-item {
+      border-left: 2px solid var(--border-subtle);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .incident-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .incident-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .incident-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="models.html">Models</a></li>
+      <li><a href="status.html" style="color: var(--text-primary);">Status</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="status-header reveal">
+    <div class="badge">🌐 Real-Time Health Check</div>
+    <h1>Platform Uptime & Endpoint Performance.</h1>
+  </section>
+
+  <!-- Operational Banner -->
+  <div class="banner-operational reveal">
+    <span class="status-dot"></span> All Core Systems & Proxy Endpoints Operational
+  </div>
+
+  <!-- Status Cards -->
+  <section class="status-grid">
+    
+    <div class="status-card reveal">
+      <div class="status-card-info">
+        <span style="font-weight: 600;">Surge.sh Frontend Edge CDN</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Static assets delivery & HTML views</span>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span> Operational (99.99%)</div>
+    </div>
+
+    <div class="status-card reveal">
+      <div class="status-card-info">
+        <span style="font-weight: 600;">Vercel Serverless Groq Proxy</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">/api/chat secret headers & CORS router</span>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span> Operational (99.95%)</div>
+    </div>
+
+    <div class="status-card reveal">
+      <div class="status-card-info">
+        <span style="font-weight: 600;">Groq LPU LLaMA 3.3 Engine</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">llama-3.3-70b-versatile inference endpoint</span>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span> Operational (~300 t/s)</div>
+    </div>
+
+    <div class="status-card reveal">
+      <div class="status-card-info">
+        <span style="font-weight: 600;">DeepSeek-R1 Distill Endpoint</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">deepseek-r1-distill-llama-70b reasoning engine</span>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span> Operational (~250 t/s)</div>
+    </div>
+
+  </section>
+
+  <!-- Incident Log -->
+  <section class="incident-history reveal">
+    <h3 style="margin-bottom: 1.5rem; font-size: 1.3rem;">Past Incident Log</h3>
+
+    <div class="incident-item">
+      <div class="incident-date">July 28, 2026</div>
+      <div class="incident-title">Scheduled Proxy Route Optimization</div>
+      <div class="incident-desc">Minor zero-downtime update applied to Vercel CORS headers for faster pre-flight response times.</div>
+    </div>
+
+    <div class="incident-item">
+      <div class="incident-date">July 15, 2026</div>
+      <div class="incident-title">Groq LPU Pipeline Upgrade</div>
+      <div class="incident-desc">Upgraded backend router to support LLaMA 3.3 70B high-concurrency throughput.</div>
+    </div>
+  </section>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

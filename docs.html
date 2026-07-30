@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Documentation & Architecture</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .docs-layout {
+      max-width: 1200px;
+      margin: 2rem auto 6rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 3rem;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 5rem;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .docs-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .docs-menu a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .docs-menu a:hover,
+    .docs-menu a.active {
+      color: var(--text-primary);
+      background: var(--bg-surface-hover);
+    }
+
+    .docs-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .docs-section {
+      scroll-margin-top: 6rem;
+    }
+
+    .docs-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .docs-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .code-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      overflow-x: auto;
+      margin: 1rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="docs.html" style="color: var(--text-primary);">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Docs Workspace -->
+  <div class="docs-layout">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="docs-sidebar">
+      <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">Documentation</h4>
+      <ul class="docs-menu">
+        <li><a href="#overview" class="active">Architecture Overview</a></li>
+        <li><a href="#quickstart">Quickstart Setup</a></li>
+        <li><a href="#proxy">Vercel Proxy Setup</a></li>
+        <li><a href="#deployment">Surge Deployment</a></li>
+      </ul>
+    </aside>
+
+    <!-- Right Content Area -->
+    <main class="docs-content">
+      
+      <!-- Section 1 -->
+      <section id="overview" class="docs-section reveal">
+        <h2>Architecture Overview</h2>
+        <p>Aura AI is built using a modern decoupled architecture. The static frontend is served globally via Surge.sh CDN, while backend API requests are securely routed through a lightweight Vercel serverless proxy to Groq's LPU inference engine.</p>
+        
+        <div class="code-block">
+[ Surge.sh Frontend ] ---> [ Vercel Serverless Proxy ] ---> [ Groq API ]
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="quickstart" class="docs-section reveal">
+        <h2>Quickstart Setup</h2>
+        <p>To run or customize Aura AI locally on your machine, clone the repository or open the project folder and start a static local server:</p>
+        
+        <div class="code-block">
+# Navigate to project directory
+cd aura-ai-platform
+
+# Serve locally using npx
+npx serve .
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="proxy" class="docs-section reveal">
+        <h2>Vercel Proxy Setup</h2>
+        <p>To prevent exposing your <code>GROQ_API_KEY</code> on the client side, create a serverless endpoint inside <code>/api/chat.js</code> deployed on Vercel:</p>
+        
+        <div class="code-block">
+export default async function handler(req, res) {
+  const { prompt } = req.body;
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "llama-3.3-70b-versatile",
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+  const data = await response.json();
+  res.status(200).json({ reply: data.choices[0].message.content });
+}
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="deployment" class="docs-section reveal">
+        <h2>Surge.sh Deployment</h2>
+        <p>Deploying the static assets to Surge takes less than 10 seconds using the Surge CLI:</p>
+        
+        <div class="code-block">
+# Install Surge globally
+npm install -g surge
+
+# Deploy current directory
+surge . aura-ai-platform.surge.sh
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

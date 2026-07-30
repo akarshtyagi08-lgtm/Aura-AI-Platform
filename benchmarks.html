@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Speed & Performance Benchmarks</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .benchmarks-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .benchmarks-container {
+      max-width: 1000px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .benchmark-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .benchmark-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .bar-chart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bar-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 24px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--text-primary);
+      border-radius: var(--radius-sm);
+      transition: width 1s var(--ease-spring);
+    }
+
+    .bar-fill.groq {
+      background: var(--status-online);
+    }
+
+    .metrics-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .metric-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--status-online);
+      letter-spacing: -0.03em;
+    }
+
+    .metric-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="benchmarks.html" style="color: var(--text-primary);">Benchmarks</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="benchmarks-header reveal">
+    <div class="badge">⚡ Hardware Speed Test</div>
+    <h1>Inference Speed Benchmarks.</h1>
+    <p>Comparing Groq LPU processing power against conventional GPU cloud providers.</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="benchmarks-container">
+    
+    <!-- Top Stats Bar -->
+    <div class="metrics-summary-grid reveal">
+      <div class="metric-box">
+        <span class="metric-title">Groq Peak Speed</span>
+        <span class="metric-value">450 t/s</span>
+        <span style="font-size: 0.8rem; color: var(--text-secondary);">Mixtral 8x7B MoE</span>
+      </div>
+
+      <div class="metric-box">
+        <span class="metric-title">Time To First Token</span>
+        <span class="metric-value">0.12s</span>
+        <span style="font-size: 0.8rem; color: var(--text-secondary);">Ultra-low latency proxy</span>
+      </div>
+
+      <div class="metric-box">
+        <span class="metric-title">Average Throughput</span>
+        <span class="metric-value">310 t/s</span>
+        <span style="font-size: 0.8rem; color: var(--text-secondary);">LLaMA 3.3 70B</span>
+      </div>
+    </div>
+
+    <!-- Chart Card -->
+    <div class="benchmark-card reveal">
+      <h2>Tokens Per Second (t/s) Comparison</h2>
+      <p style="color: var(--text-secondary); font-size: 0.92rem;">Measured execution speed for 70B parameter models under active query workloads.</p>
+
+      <div class="bar-chart-container">
+        
+        <!-- Bar 1 -->
+        <div class="bar-group">
+          <div class="bar-label-row">
+            <span>Aura AI (Groq LPU Engine)</span>
+            <span style="color: var(--status-online);">310 t/s</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill groq" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar 2 -->
+        <div class="bar-group">
+          <div class="bar-label-row">
+            <span>Standard Cloud A100 GPU</span>
+            <span>45 t/s</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: 25%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar 3 -->
+        <div class="bar-group">
+          <div class="bar-label-row">
+            <span>Legacy Hosted Endpoints</span>
+            <span>22 t/s</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: 12%;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

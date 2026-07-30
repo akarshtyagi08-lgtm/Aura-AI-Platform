@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Engineering Blog</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .blog-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-grid {
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      padding: 0 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .blog-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .blog-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .blog-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="blog.html" style="color: var(--text-primary);">Blog</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="blog-header reveal">
+    <div class="badge">📰 Engineering Insights</div>
+    <h1>Technical Articles & System Design.</h1>
+    <p>Deep dives into low-latency LLM inference, serverless proxy security, and dark mode UI aesthetics.</p>
+  </section>
+
+  <!-- Blog Grid -->
+  <main class="blog-grid">
+    
+    <!-- Post 1 -->
+    <article class="blog-card reveal">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Groq Inference Speed" class="blog-img" />
+      <div class="blog-body">
+        <div>
+          <div class="blog-meta" style="margin-bottom: 8px;">
+            <span class="blog-tag">Performance</span>
+            <span>July 25, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem; line-height: 1.3;">Why Groq LPU Hardware Outperforms Traditional GPUs</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">Understanding deterministic tensor execution and why token speeds reach 300+ t/s on open models.</p>
+        </div>
+        <a href="docs.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle);">Read Article</a>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="blog-card reveal">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Vercel Proxy Security" class="blog-img" />
+      <div class="blog-body">
+        <div>
+          <div class="blog-meta" style="margin-bottom: 8px;">
+            <span class="blog-tag">Architecture</span>
+            <span>July 14, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem; line-height: 1.3;">Securing API Keys on Static Hosting Platforms like Surge.sh</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">How serverless proxies decouple client-side static rendering from backend authentication secrets.</p>
+        </div>
+        <a href="docs.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle);">Read Article</a>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="blog-card reveal">
+      <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Design Systems" class="blog-img" />
+      <div class="blog-body">
+        <div>
+          <div class="blog-meta" style="margin-bottom: 8px;">
+            <span class="blog-tag">Design System</span>
+            <span>June 28, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem; line-height: 1.3;">Building Tactile Dark Mode UIs Without Generic Neon Clichés</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;">A guide to slate background tones, multi-layer box shadows, and 1px subtle glass borders.</p>
+        </div>
+        <a href="docs.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle);">Read Article</a>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

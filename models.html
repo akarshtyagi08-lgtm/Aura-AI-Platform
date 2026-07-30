@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Supported AI Models</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .models-header {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .models-grid {
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 0 1.5rem;
+    }
+
+    .model-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .model-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: var(--bg-main);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      margin: 1rem 0;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tag-model {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="models.html" style="color: var(--text-primary);">Models</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="models-header reveal">
+    <div class="badge">🤖 Open-Source LLM Matrix</div>
+    <h1>Supported Models & Real-Time Performance Benchmarks.</h1>
+    <p>Powered by Groq's LPU Inference engine for ultra-low latency execution across flagship open models.</p>
+  </section>
+
+  <!-- Models Grid -->
+  <section class="models-grid">
+    
+    <!-- Model 1 -->
+    <div class="model-card reveal">
+      <div>
+        <span class="tag-model">Flagship Generalist</span>
+        <h3 style="margin-top: 10px; font-size: 1.4rem;">LLaMA 3.3 70B</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Meta's state-of-the-art 70B parameter model tuned for high-level reasoning, code generation, and dialogue.</p>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-label">Inference Speed</span>
+            <span class="stat-value" style="color: var(--status-online);">~300 t/s</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Context Window</span>
+            <span class="stat-value">128K</span>
+          </div>
+        </div>
+      </div>
+      <a href="play.html" class="btn-primary" style="text-align: center;">Test in Playground</a>
+    </div>
+
+    <!-- Model 2 -->
+    <div class="model-card reveal">
+      <div>
+        <span class="tag-model">Reasoning Specialist</span>
+        <h3 style="margin-top: 10px; font-size: 1.4rem;">DeepSeek-R1 Distill</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Distilled LLaMA 70B variant engineered specifically for complex step-by-step logic and mathematical reasoning.</p>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-label">Inference Speed</span>
+            <span class="stat-value" style="color: var(--status-online);">~250 t/s</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Context Window</span>
+            <span class="stat-value">128K</span>
+          </div>
+        </div>
+      </div>
+      <a href="play.html" class="btn-primary" style="text-align: center;">Test in Playground</a>
+    </div>
+
+    <!-- Model 3 -->
+    <div class="model-card reveal">
+      <div>
+        <span class="tag-model">Mixture of Experts</span>
+        <h3 style="margin-top: 10px; font-size: 1.4rem;">Mixtral 8x7B</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Mistral AI's high-efficiency sparse MoE model delivering fast multilingual reasoning and code drafting.</p>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-label">Inference Speed</span>
+            <span class="stat-value" style="color: var(--status-online);">~450 t/s</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Context Window</span>
+            <span class="stat-value">32K</span>
+          </div>
+        </div>
+      </div>
+      <a href="play.html" class="btn-primary" style="text-align: center;">Test in Playground</a>
+    </div>
+
+  </section>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

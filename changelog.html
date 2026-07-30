@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Product Changelog</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .changelog-header {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-container {
+      max-width: 850px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+
+    .release-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .version-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+    }
+
+    .release-date {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .release-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .release-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .changes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .changes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .change-type {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .type-feat { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .type-fix { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+    .type-perf { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="models.html">Models</a></li>
+      <li><a href="changelog.html" style="color: var(--text-primary);">Changelog</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="changelog-header reveal">
+    <div class="badge">🚀 Platform Updates</div>
+    <h1>Changelog & Product Evolution.</h1>
+    <p>Track everything new added to the Aura AI platform, from proxy performance tuning to UI improvements.</p>
+  </section>
+
+  <!-- Timeline List -->
+  <div class="timeline-container">
+    
+    <!-- Release 2.0.0 -->
+    <div class="timeline-item reveal">
+      <div class="release-meta">
+        <span class="version-tag">v2.0.0</span>
+        <span class="release-date">July 30, 2026</span>
+      </div>
+      <div class="release-card">
+        <h3>Ultra-Sleek Multi-Page Launch</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Major architectural overhaul introducing modular page structures, tactile dark design system, and Groq proxy integration.</p>
+        
+        <ul class="changes-list">
+          <li><span class="change-type type-feat">NEW</span> Multi-page design architecture with modular CSS design system.</li>
+          <li><span class="change-type type-feat">NEW</span> Groq LPU API Integration via secure serverless Vercel proxy.</li>
+          <li><span class="change-type type-perf">PERF</span> Intersection Observer scroll-reveal animations for 60fps performance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Release 1.2.0 -->
+    <div class="timeline-item reveal">
+      <div class="release-meta">
+        <span class="version-tag">v1.2.0</span>
+        <span class="release-date">July 18, 2026</span>
+      </div>
+      <div class="release-card">
+        <h3>DeepSeek-R1 Distill Model Integration</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Added support for reasoning-focused open models in the Studio and Playground.</p>
+
+        <ul class="changes-list">
+          <li><span class="change-type type-feat">NEW</span> Added DeepSeek-R1 Distill 70B model option to Playground tuning panel.</li>
+          <li><span class="change-type type-fix">FIX</span> Resolved prompt input overflow handling on mobile viewports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Release 1.0.0 -->
+    <div class="timeline-item reveal">
+      <div class="release-meta">
+        <span class="version-tag">v1.0.0</span>
+        <span class="release-date">June 20, 2026</span>
+      </div>
+      <div class="release-card">
+        <h3>Initial Prototype Engine</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">First proof-of-concept static build deployed on Surge.sh.</p>
+
+        <ul class="changes-list">
+          <li><span class="change-type type-feat">NEW</span> Single-file HTML/CSS chat interface prototype.</li>
+          <li><span class="change-type type-perf">PERF</span> Deployed static assets to Surge.sh edge CDN.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

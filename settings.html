@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Platform Settings</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .settings-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .settings-container {
+      max-width: 800px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .settings-group {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .settings-group h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.8rem;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .setting-label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .setting-label span {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .setting-label small {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .setting-input {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+      min-width: 220px;
+    }
+
+    .setting-input:focus {
+      border-color: var(--border-focus);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="settings.html" style="color: var(--text-primary);">Settings</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="settings-header reveal">
+    <div class="badge">⚙️ Preferences</div>
+    <h1>Platform Configuration.</h1>
+    <p>Manage your local app defaults, Vercel proxy endpoints, and storage options.</p>
+  </section>
+
+  <!-- Main Settings Container -->
+  <main class="settings-container">
+    
+    <!-- Group 1: Model & Proxy -->
+    <div class="settings-group reveal">
+      <h2>Model & Endpoint Defaults</h2>
+
+      <div class="setting-item">
+        <div class="setting-label">
+          <span>Default Model</span>
+          <small>Model loaded automatically when launching Studio.</small>
+        </div>
+        <select class="setting-input" id="defaultModel">
+          <option value="llama-3.3-70b-versatile">LLaMA 3.3 70B (Default)</option>
+          <option value="deepseek-r1-distill-llama-70b">DeepSeek-R1 Distill</option>
+          <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
+        </select>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-label">
+          <span>Custom Proxy Endpoint</span>
+          <small>Route requests through your own Vercel proxy URL.</small>
+        </div>
+        <input type="text" class="setting-input" id="proxyUrl" placeholder="/api/chat" />
+      </div>
+    </div>
+
+    <!-- Group 2: Storage & Cache -->
+    <div class="settings-group reveal">
+      <h2>Storage & Data Privacy</h2>
+
+      <div class="setting-item">
+        <div class="setting-label">
+          <span>Clear Local Chat Cache</span>
+          <small>Purge stored conversation history from browser memory.</small>
+        </div>
+        <button class="btn-primary" onclick="clearCache()" style="background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-subtle);">Clear Storage</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+  <script>
+    function clearCache() {
+      localStorage.clear();
+      alert("Local chat cache and preferences cleared successfully! ✓");
+    }
+  </script>
+</body>
+</html>

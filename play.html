@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Model Playground</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .playground-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .controls-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--text-primary);
+    }
+
+    .control-group textarea, 
+    .control-group select {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      color: var(--text-primary);
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .workspace-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .output-box {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      overflow-y: auto;
+      min-height: 350px;
+    }
+
+    .input-box {
+      display: flex;
+      gap: 12px;
+    }
+
+    .input-box textarea {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      color: var(--text-primary);
+      outline: none;
+      resize: vertical;
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html" style="color: var(--text-primary);">Playground</a></li>
+      <li><a href="templates.html">Prompts</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Playground Workspace -->
+  <div class="playground-container">
+    <!-- Left Parameters Control Panel -->
+    <aside class="controls-panel">
+      <h3>🎛️ Model Parameters</h3>
+
+      <div class="control-group">
+        <label>Select Model</label>
+        <select id="modelSelect">
+          <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
+          <option value="deepseek-r1-distill-llama-70b">deepseek-r1-distill-llama-70b</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>System Instructions</label>
+        <textarea id="systemPrompt" rows="3" placeholder="You are a helpful coding assistant..."></textarea>
+      </div>
+
+      <div class="control-group">
+        <label>Temperature <span id="tempVal">0.7</span></label>
+        <input type="range" id="tempRange" min="0" max="1" step="0.1" value="0.7" oninput="document.getElementById('tempVal').innerText = this.value" />
+      </div>
+
+      <div class="control-group">
+        <label>Max Tokens <span id="tokensVal">1024</span></label>
+        <input type="range" id="tokensRange" min="256" max="4096" step="256" value="1024" oninput="document.getElementById('tokensVal').innerText = this.value" />
+      </div>
+    </aside>
+
+    <!-- Right Workspace Output & Input -->
+    <main class="workspace-panel">
+      <div class="output-box" id="outputConsole">// Response output will stream here...</div>
+
+      <div class="input-box">
+        <textarea id="userPrompt" placeholder="Type your test prompt here..."></textarea>
+        <button onclick="runTest()" class="btn-primary" style="height: fit-content; align-self: flex-end; padding: 14px 24px;">Run Prompt</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    async function runTest() {
+      const consoleBox = document.getElementById("outputConsole");
+      const prompt = document.getElementById("userPrompt").value.trim();
+      
+      if (!prompt) return;
+
+      consoleBox.innerText = "Connecting to Groq Lightning API...";
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            prompt: prompt,
+            model: document.getElementById("modelSelect").value,
+            system: document.getElementById("systemPrompt").value,
+            temperature: parseFloat(document.getElementById("tempRange").value)
+          })
+        });
+
+        const data = await response.json();
+        consoleBox.innerText = data.reply || "No response generated.";
+      } catch (err) {
+        consoleBox.innerText = "// Proxy not deployed yet. Once /api/chat is linked via Vercel, tuned model outputs will render here!";
+      }
+    }
+  </script>
+</body>
+</html>

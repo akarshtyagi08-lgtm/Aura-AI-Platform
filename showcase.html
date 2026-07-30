@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Community Showcase</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .showcase-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .showcase-grid {
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      padding: 0 1.5rem;
+    }
+
+    .showcase-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .showcase-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .showcase-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .showcase-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .showcase-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="showcase.html" style="color: var(--text-primary);">Showcase</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="showcase-header reveal">
+    <div class="badge">✨ Community Gallery</div>
+    <h1>Built with Aura AI Engine.</h1>
+    <p>Explore tools, developer extensions, and custom interfaces powered by our high-speed Groq proxy setup.</p>
+  </section>
+
+  <!-- Showcase Gallery Grid -->
+  <main class="showcase-grid">
+    
+    <!-- Project 1 -->
+    <div class="showcase-card reveal">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Code Refactor Suite" class="showcase-img" />
+      <div class="showcase-body">
+        <div>
+          <span class="showcase-tag">Developer Tool</span>
+          <h3 style="font-size: 1.25rem; margin-top: 8px;">Automated Code Auditor</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">A browser extension that uses Aura's LLaMA 3.3 proxy to scan pull requests for logic bugs in real time.</p>
+        </div>
+        <a href="play.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px;">Try Prompt Preset</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="showcase-card reveal">
+      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop" alt="Cybersecurity Matrix" class="showcase-img" />
+      <div class="showcase-body">
+        <div>
+          <span class="showcase-tag">Security</span>
+          <h3 style="font-size: 1.25rem; margin-top: 8px;">DeepSeek CyberScanner</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Interactive vulnerability analysis workspace powered by DeepSeek-R1 Distill step-by-step reasoning.</p>
+        </div>
+        <a href="play.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px;">Try Prompt Preset</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="showcase-card reveal">
+      <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Design UI System" class="showcase-img" />
+      <div class="showcase-body">
+        <div>
+          <span class="showcase-tag">UI/UX Engineering</span>
+          <h3 style="font-size: 1.25rem; margin-top: 8px;">Tactile CSS Component Builder</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Generates production-ready, dark-mode CSS variables and multi-layer box shadows instantly.</p>
+        </div>
+        <a href="templates.html" class="btn-primary" style="text-align: center; font-size: 0.88rem; padding: 10px;">View Template</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

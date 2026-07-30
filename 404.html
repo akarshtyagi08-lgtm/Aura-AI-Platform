@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — 404 Page Not Found</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .error-container {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-size: 7rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .error-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      max-width: 500px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- 404 Hero Area -->
+  <main class="error-container">
+    <div class="error-card reveal">
+      <div class="error-code">404</div>
+      <h2 style="font-size: 1.5rem;">Endpoint Not Found</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">The route or prompt page you are looking for doesn't exist or has been relocated.</p>
+      
+      <a href="app.html" class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem; margin-top: 0.5rem;">Return to Studio Engine</a>
+    </div>
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

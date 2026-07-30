@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Privacy Policy</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .privacy-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .privacy-content {
+      max-width: 850px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .policy-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .policy-block h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    .policy-block p, .policy-block ul {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .policy-block ul {
+      margin-top: 0.8rem;
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="privacy.html" style="color: var(--text-primary);">Privacy</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="privacy-header reveal">
+    <div class="badge">🛡️ Privacy First</div>
+    <h1>Privacy Policy & Data Security.</h1>
+    <p>We respect your code and prompts. Aura AI is engineered around strict zero-retention principles.</p>
+  </section>
+
+  <!-- Content -->
+  <main class="privacy-content">
+    
+    <div class="policy-block reveal">
+      <h2>1. Zero Log Retention Policy</h2>
+      <p>Aura AI does not store your conversation logs, prompt histories, or generated outputs on any database. Your chats remain stored locally inside your own web browser session.</p>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2>2. Key Isolation & Proxy Protection</h2>
+      <p>To keep Groq API keys secure, client requests route through a stateless serverless proxy on Vercel (`/api/chat`). The proxy routes your prompt to Groq's API and returns the response without persisting data to disk.</p>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2>3. Local Storage Management</h2>
+      <p>Any settings, model configurations, or prompt presets saved in the app are stored exclusively in your browser's <code>localStorage</code>. You can purge this data anytime by clearing your site cookies and browser storage.</p>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2>4. Direct Inquiries & Contact</h2>
+      <p>If you have any security or privacy questions regarding our open-source codebase, feel free to reach out directly:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:akarshtyagi08@gmail.com" style="color: var(--text-primary); text-decoration: underline;">akarshtyagi08@gmail.com</a></li>
+        <li><strong>Support:</strong> <a href="contact.html" style="color: var(--text-primary); text-decoration: underline;">Contact Page</a></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

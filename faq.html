@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Frequently Asked Questions</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .faq-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-container {
+      max-width: 850px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+    }
+
+    .faq-search-box {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 2.5rem;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-search-box:focus {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-md);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-focus);
+    }
+
+    .faq-question {
+      padding: 1.5rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-toggle-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s var(--ease-spring);
+      color: var(--text-muted);
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(45deg);
+      color: var(--text-primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), padding 0.35s ease;
+      padding: 0 2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 2rem 1.5rem 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a href="faq.html" style="color: var(--text-primary);">FAQ</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="faq-header reveal">
+    <div class="badge">❓ Help Center</div>
+    <h1>Frequently Asked Questions.</h1>
+    <p>Everything you need to know about Aura AI, Groq inference speeds, and hosting configuration.</p>
+  </section>
+
+  <!-- FAQ Interactive Container -->
+  <main class="faq-container">
+    
+    <!-- Real-Time Search Bar -->
+    <input type="text" class="faq-search-box reveal" id="faqSearch" placeholder="Search questions (e.g., Groq, Surge, API keys, proxy)..." oninput="filterFAQ()" />
+
+    <!-- FAQ Accordion List -->
+    <div class="faq-list" id="faqList">
+      
+      <!-- Item 1 -->
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is Aura AI completely free to use?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes! Aura AI is 100% free and open-source. There are no paid tiers, hidden subscriptions, or token charges. You can use the public studio or deploy your own copy to Surge.sh for zero hosting costs.
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How does the Groq API proxy protect my keys?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          The frontend running on Surge.sh never holds your <code>GROQ_API_KEY</code>. Instead, user requests are sent directly to a lightweight Vercel serverless function (`/api/chat.js`) which securely attaches the API token in secret headers before querying Groq's servers.
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Which AI models are supported?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Aura AI supports high-speed open-source flagship models served via Groq, including <strong>LLaMA 3.3 70B Versatile</strong>, <strong>DeepSeek-R1 Distill LLaMA 70B</strong>, and <strong>Mixtral 8x7B</strong>.
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I host my own version on Surge.sh?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely! Just clone the project repository, configure your Vercel serverless environment variable, and run <code>npx surge . your-domain.surge.sh</code> in your terminal. Setup takes less than two minutes.
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How can I report bugs or contact support?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          You can reach out directly via our <a href="contact.html" style="color: var(--text-primary); text-decoration: underline;">Contact Page</a> or send an email to <a href="mailto:akarshtyagi08@gmail.com" style="color: var(--text-primary); text-decoration: underline;">akarshtyagi08@gmail.com</a>.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+  <script>
+    // Accordion Toggle Logic
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      const isActive = item.classList.contains("active");
+
+      // Close all other items for clean single-accordion feel
+      document.querySelectorAll(".faq-item").forEach(el => el.classList.remove("active"));
+
+      // Toggle current item
+      if (!isActive) {
+        item.classList.add("active");
+      }
+    }
+
+    // Live Search Filter Logic
+    function filterFAQ() {
+      const query = document.getElementById("faqSearch").value.toLowerCase();
+      const items = document.querySelectorAll(".faq-item");
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(query) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

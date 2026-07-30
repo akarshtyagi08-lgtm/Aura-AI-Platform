@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — About & Mission</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .about-header {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 1rem;
+    }
+
+    .principle-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .principle-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .principle-card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .story-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .story-block h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .story-block p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a href="about.html" style="color: var(--text-primary);">About</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="about-header reveal">
+    <div class="badge">💡 Human-Centric AI Engineering</div>
+    <h1>Built for Speed. Designed for Humans.</h1>
+    <p>Aura AI was created to strip away subscription paywalls and bloated interfaces, replacing them with raw inference speed and tactile design.</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="about-content">
+    
+    <!-- Origin Story -->
+    <div class="story-block reveal">
+      <h2>The Philosophy Behind Aura AI</h2>
+      <p>Most modern AI interfaces are overcrowded with generic neon gradients, heavy paywalls, and sluggish response times. We believed there was a better way to interact with open intelligence.</p>
+      <p>By leveraging Groq's revolutionary LPU hardware and coupling it with static edge deployment via Surge.sh, Aura AI delivers instantaneous response times with zero client-side overhead.</p>
+    </div>
+
+    <!-- Core Principles Grid -->
+    <div class="philosophy-grid">
+      
+      <div class="principle-card reveal">
+        <h3>⚡ Uncompromising Speed</h3>
+        <p>Inference should feel like typing in a local terminal. We optimize every byte to ensure responses render near-instantaneously.</p>
+      </div>
+
+      <div class="principle-card reveal">
+        <h3>🎨 Tactile Aesthetics</h3>
+        <p>No neon cyan or generic AI gradients. We build software with deep slate tones, micro-shadows, crisp typography, and real depth.</p>
+      </div>
+
+      <div class="principle-card reveal">
+        <h3>🛡️ Key Isolation Security</h3>
+        <p>Your API keys remain completely safe. Our isolated Vercel proxy ensures frontend requests never expose secrets on client browsers.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+</body>
+</html>

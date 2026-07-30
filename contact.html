@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura AI — Contact & Support</title>
+  
+  <!-- Global Design System CSS -->
+  <link rel="stylesheet" href="assets/css/global-design-system.css" />
+  
+  <style>
+    .contact-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Contact Cards */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .contact-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Interactive Form */
+    .contact-form {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-input {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Toast Alert Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--status-online);
+      color: var(--text-primary);
+      padding: 14px 22px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s var(--ease-spring);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="status-dot"></span>
+      AURA AI
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">Studio</a></li>
+      <li><a href="play.html">Playground</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a href="contact.html" style="color: var(--text-primary);">Contact</a></li>
+    </ul>
+
+    <a href="app.html" class="btn-primary">Launch App</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="contact-header reveal">
+    <div class="badge">💬 Reach Out</div>
+    <h1>Get in Touch with Our Team.</h1>
+    <p>Have questions, feedback, or custom implementation ideas? Drop us a line below or reach out directly.</p>
+  </section>
+
+  <!-- Main Grid -->
+  <div class="contact-container">
+    
+    <!-- Left Direct Contact Info -->
+    <div class="contact-info">
+      
+      <div class="contact-card card-sleek reveal">
+        <div class="card-icon">✉️</div>
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Direct Email</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">For support, inquiries, and developer collaborations.</p>
+          <a href="mailto:akarshtyagi08@gmail.com" style="color: var(--text-primary); text-decoration: underline; font-weight: 600; font-size: 0.95rem;">akarshtyagi08@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-card card-sleek reveal">
+        <div class="card-icon">🌐</div>
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Open Source Community</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Join developers building lightweight UI components and Groq pipeline integrations.</p>
+        </div>
+      </div>
+
+      <div class="contact-card card-sleek reveal">
+        <div class="card-icon">⚡</div>
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Deployment Status</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Check real-time proxy endpoint health on our <a href="status.html" style="color: var(--text-primary); text-decoration: underline;">Status Page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Interactive Form -->
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" class="form-input" placeholder="e.g. Alex Rivera" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-input" placeholder="name@domain.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" class="form-input" placeholder="Tell us how we can help..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="padding: 14px; font-size: 0.95rem; margin-top: 8px;">Send Message</button>
+    </form>
+
+  </div>
+
+  <!-- Toast Alert Component -->
+  <div class="toast" id="toastNotification">
+    <span class="status-dot"></span>
+    <span id="toastMsg">Message sent successfully! We will get back to you soon.</span>
+  </div>
+
+  <!-- Interactive JS Engine -->
+  <script src="assets/js/scroll-animations.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById("name").value;
+      const toast = document.getElementById("toastNotification");
+      const toastMsg = document.getElementById("toastMsg");
+
+      toastMsg.innerText = `Thanks ${name}! Your message has been sent.`;
+      toast.classList.add("show");
+
+      // Reset Form
+      e.target.reset();
+
+      // Hide Toast after 4 seconds
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
